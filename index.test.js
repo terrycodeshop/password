@@ -79,3 +79,33 @@ test("Test the validPassword function", () => {
   errors = password.valid("Abc@1234");
   expect(errors.length).toEqual(0);
 });
+
+test("Test the checkPassword function", () => {
+  //test empty password
+  let ok = password.check("");
+  expect(ok).toEqual(false);
+
+  //test password not long enough
+  ok = password.check("Ab1@234");
+  expect(ok).toEqual(false);
+
+  //test no upper case letters
+  ok = password.check("abcd@123");
+  expect(ok).toEqual(false);
+
+  //test no lower case letters
+  ok = password.check("ABCD@123");
+  expect(ok).toEqual(false);
+
+  //test no digits
+  ok = password.check("Abcd@abc");
+  expect(ok).toEqual(false);
+
+  //test no symbols
+  ok = password.check("Abcd1234");
+  expect(ok).toEqual(false);
+
+  //test no errors
+  ok = password.check("Abc@1234");
+  expect(ok).toEqual(true);
+});

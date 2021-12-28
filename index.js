@@ -101,9 +101,16 @@ function validPassword(password = "") {
   return errors;
 }
 
+//scan password and return true if there are no errors
+function checkPassword(password = "") {
+  //use the validate password routine to return error array
+  return validPassword(password).length === 0;
+}
+
 module.exports = {
   getConfig: getConfig,
   setConfig: setConfig,
   count: countPassword,
   valid: validPassword,
+  check: checkPassword,
 };
