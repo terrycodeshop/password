@@ -1,0 +1,24 @@
+{
+  "name": "@terrycodeshop/password",
+  "version": "1.0.0",
+  "description": "Terry Code Shop password validation",
+  "main": "index.js",
+  "files": [
+    "index.test.js"
+  ],
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "terry",
+    "code",
+    "shop",
+    "password",
+    "validation"
+  ],
+  "author": "Terry Code Shop",
+  "license": "MIT",
+  "dependencies": {
+    "jest": "^27.4.5"
+  }
+}
