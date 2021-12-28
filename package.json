@@ -9,16 +9,25 @@
   "scripts": {
     "test": "jest"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/terrycodeshop/password.git"
+  },
   "keywords": [
     "terry",
     "code",
     "shop",
     "password",
+    "strength",
     "validation"
   ],
   "author": "Terry Code Shop",
   "license": "MIT",
   "dependencies": {
     "jest": "^27.4.5"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/terrycodeshop/password/issues"
+  },
+  "homepage": "https://github.com/terrycodeshop/password#readme"
 }
