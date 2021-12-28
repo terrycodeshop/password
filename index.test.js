@@ -39,3 +39,13 @@ test("Test the setConfig function", () => {
   //reset the default configuration
   password.setConfig(backup);
 });
+
+test("Test the password.count function", () => {
+  //count characters for a totally valid password
+  let result = password.count("Ab0!5678");
+  expect(result.length).toEqual(backup.minLength);
+  expect(result.upper).toEqual(backup.minUpper);
+  expect(result.lower).toEqual(backup.minLower);
+  //expect(result.digit).toEqual(backup.minDigit);
+  expect(result.symbol).toEqual(backup.minSymbol);
+});
