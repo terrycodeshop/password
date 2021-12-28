@@ -21,4 +21,21 @@ function getConfig() {
   return { ...config };
 }
 
-module.exports = { getConfig: getConfig };
+function setConfig(newConfig = {}) {
+  //set config values if they exist in passed config
+  if (newConfig.minLength !== undefined) config.minLength = newConfig.minLength;
+  if (newConfig.minUpper !== undefined) config.minUpper = newConfig.minUpper;
+  if (newConfig.minLower !== undefined) config.minLower = newConfig.minLower;
+  if (newConfig.minDigit !== undefined) config.minDigit = newConfig.minDigit;
+  if (newConfig.minSymbol !== undefined) config.minSymbol = newConfig.minSymbol;
+  if (newConfig.tplLength !== undefined) config.tplLength = newConfig.tplLength;
+  if (newConfig.tplUpper !== undefined) config.tplUpper = newConfig.tplUpper;
+  if (newConfig.tplLower !== undefined) config.tplLower = newConfig.tplLower;
+  if (newConfig.tplDigit !== undefined) config.tplDigit = newConfig.tplDigit;
+  if (newConfig.tplSymbol !== undefined) config.tplSymbol = newConfig.tplSymbol;
+  if (newConfig.tplInvalid !== undefined)
+    config.tplInvalid = newConfig.tplInvalid;
+  if (newConfig.Symbols !== undefined) config.Symbols = newConfig.Symbols;
+}
+
+module.exports = { getConfig: getConfig, setConfig: setConfig };
