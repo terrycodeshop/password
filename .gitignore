@@ -1,4 +1,4 @@
 .DS_Store
 node_modules/
 node/
-Package-lock.js
+package-lock.json
