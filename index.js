@@ -61,8 +61,49 @@ function countPassword(value = "") {
   return results;
 }
 
+function formatMessage(message, value) {
+  return message.replace("#", value.ToString);
+}
+
+//scan password and return aerrors in an array
+function validPassword(password = "") {
+  //use the count password function to count character types
+  let results = countPassword(password);
+
+  //initialize error array
+  let errors = [];
+
+  //ensure the password meets the minimum length
+  if (results.length < config.minLength)
+    errors.push(formatMessage(config.tplLength, config.minLength));
+
+  //ensure password contains minimum uppercase letters
+  if (results.upper < config.minUpper)
+    errors.push(formatMessage(config.tplUpper, config.minUpper));
+
+  //ensure password contains minimum lowercase letters
+  if (results.lower < config.minLower)
+    errors.push(formatMessage(config.tplLower, config.minLower));
+
+  //ensure password contains minimum digits
+  if (results.digit < config.minDigit)
+    errors.push(formatMessage(config.tplDigit, config.minDigit));
+
+  //ensure password contains minimum symbols
+  if (results.symbol < config.minSymbol)
+    errors.push(formatMessage(config.tplSymbol, config.minSymbol));
+
+  //ensure password contains no invalid characters
+  if (results.invalid > 0)
+    errors.push(formatMessage(config.tplInvalid, results.invalid));
+
+  //return the array of error messages
+  return errors;
+}
+
 module.exports = {
   getConfig: getConfig,
   setConfig: setConfig,
   count: countPassword,
+  valid: validPassword,
 };

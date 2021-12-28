@@ -49,3 +49,33 @@ test("Test the password.count function", () => {
   //expect(result.digit).toEqual(backup.minDigit);
   expect(result.symbol).toEqual(backup.minSymbol);
 });
+
+test("Test the validPassword function", () => {
+  //test empty password
+  let errors = password.valid("");
+  expect(errors.length).toEqual(5);
+
+  //test password not long enough
+  errors = password.valid("Ab1@234");
+  expect(errors.length).toEqual(1);
+
+  //test no upper case letters
+  errors = password.valid("abcd@123");
+  expect(errors.length).toEqual(1);
+
+  //test no lower case letters
+  errors = password.valid("ABCD@123");
+  expect(errors.length).toEqual(1);
+
+  //test no digits
+  errors = password.valid("Abcd@abc");
+  expect(errors.length).toEqual(1);
+
+  //test no symbols
+  errors = password.valid("Abcd1234");
+  expect(errors.length).toEqual(1);
+
+  //test no errors
+  errors = password.valid("Abc@1234");
+  expect(errors.length).toEqual(0);
+});
