@@ -38,4 +38,31 @@ function setConfig(newConfig = {}) {
   if (newConfig.Symbols !== undefined) config.Symbols = newConfig.Symbols;
 }
 
-module.exports = { getConfig: getConfig, setConfig: setConfig };
+function countPassword(value = "") {
+  //initialize results object
+  results = {};
+  results.length = value.length;
+  results.upper = 0;
+  results.lower = 0;
+  results.digit = 0;
+  results.symbol = 0;
+  results.invalid = 0;
+
+  //loop counting character types
+  value.split("").map((c) => {
+    if (c >= "a" && c <= "z") results.lower++;
+    else if (c >= "A" && c <= "Z") results.upper++;
+    else if (c >= "0" && c <= "9") results.digit++;
+    else if (config.symbols.indexOf(c) >= 0) results.symbol++;
+    else results.invalid++;
+  });
+
+  //return result counters
+  return results;
+}
+
+module.exports = {
+  getConfig: getConfig,
+  setConfig: setConfig,
+  count: countPassword,
+};
